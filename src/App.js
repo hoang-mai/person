@@ -1,7 +1,9 @@
+import Login from "~/Pages/Auth/login/login";
+
 function App() {
   return (
     <div>
-      <h1>Person</h1>
+      <Login />
     </div>
   );
 }
