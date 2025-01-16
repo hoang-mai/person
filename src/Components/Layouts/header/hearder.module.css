@@ -1,0 +1,104 @@
+@import '../../../configs/colors/colors.css';
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    border-bottom: #f1f1f1;
+}
+
+.nav {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 200px;
+}
+
+.childNav {
+    height: 100%;
+    width: 100%;
+}
+
+
+.logoWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 16px;
+    padding-left: 10px;
+}
+
+
+.userInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 16px;
+    padding-left: 10px;
+}
+
+.searchWrapper {
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+.search {
+    height: 40%;
+    width: 100%;
+    padding: 8px 10px;
+    padding-left: 30px;
+    color: var(--color-btn);
+    border-radius:20px;
+    background-color: var(--background-color);
+    border: none;
+}
+.search:focus {
+    outline: none;
+    border: none;
+    background-color: var(--background-color-hover);
+  }
+.iconSearch {
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+    font-size: 16px;
+    color: var(--color-btn);
+}
+
+.paddingRight {
+    padding-right: 6px;
+}
+
+.active {
+    position: relative;
+}
+
+.active:hover .toolTip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.toolTip {
+    position: absolute;
+    background-color: var(--background-color-hover);
+    color: var(--color-btn);
+    text-align: center;
+    border-radius: 10px;
+    transform: translateX(-100%);
+    /* Sửa lại để căn chính giữa tooltip */
+    bottom: -50px;
+    white-space: nowrap;
+    visibility: hidden;
+    
+    opacity: 0;
+    pointer-events: none;
+    /* Tooltip không can thiệp vào các phần tử khác */
+    transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+    /* Thêm transition cho visibility */
+    padding: 10px 10px;
+}
