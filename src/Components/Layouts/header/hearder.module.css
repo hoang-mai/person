@@ -19,6 +19,7 @@
 .childNav {
     height: 100%;
     width: 100%;
+    margin-right: 4px;
 }
 
 
@@ -32,11 +33,12 @@
 
 
 .userInfo {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-right: 16px;
-    padding-left: 10px;
+    padding-left: 135px;
 }
 
 .searchWrapper {

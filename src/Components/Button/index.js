@@ -1,12 +1,13 @@
-
+import { forwardRef } from "react";
 import styles from "./button.module.css";
 import clsx from "clsx";
 
 
-function Button({logo,icon,iconNav,iconNavFocus,onClick, children }) {
+function Button({logo,icon,iconNav,iconNavFocus,onClick, children },ref) {
 
+  
   return (
-      <button onClick={onClick}
+      <button ref={ref} onClick={onClick}
         className={clsx(styles.btn,{
           [styles.logo]: logo,
           [styles.icon]: icon,
@@ -20,4 +21,4 @@ function Button({logo,icon,iconNav,iconNavFocus,onClick, children }) {
   );
 }
 
-export default Button;
+export default forwardRef(Button);
