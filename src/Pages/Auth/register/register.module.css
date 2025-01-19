@@ -1,0 +1,104 @@
+@import '../../../configs/colors/colors.css';
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+
+
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+
+    border-radius: 10px;
+    background-color: rgb(255, 212, 156);
+    padding-bottom: 10px;
+}
+
+.logo {
+    background-color: var(--background-color);
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+
+.input {
+    width: 100%;
+    height: 50px;
+    margin: 10px;
+ 
+    padding-left: 30px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--background-color);
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.input::placeholder {
+    color: var(--color-btn);
+    opacity: 0.5;
+
+}
+
+.input:focus {
+    outline: none;
+    border: none;
+    background-color: var(--background-color-hover);
+}
+
+
+
+.force {
+    color: rgb(255, 115, 115);
+}
+
+.passwordWrapper{
+    position: relative;
+  
+}
+.eyeBtn{
+    position: absolute;
+    right: 0;
+    top: 35%;
+    background: none;
+    border: none;
+}
+
+.error{
+    color: red;
+    font-size: 12px;
+    visibility: hidden;
+}
+.showError{
+    visibility: visible;
+}
+.btn{
+    width: 125px;
+    margin: 15px;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--background-color);
+    color: rgb(65, 65, 65);
+    font-size: 15px;
+    cursor: pointer;
+}
+.btn:disabled {
+    background-color: rgb(146, 146, 146); /* Màu sậm khi disabled */
+    color: rgb(65, 65, 65);
+    cursor: not-allowed; /* Con trỏ hiển thị không cho phép */
+    opacity: 0.6; /* Giảm độ trong suốt để tạo hiệu ứng mờ */
+}

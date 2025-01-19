@@ -1,6 +1,11 @@
 .dialog{
+
     background-color: turquoise;
     position: absolute;
-    left: 0px;
-    top: 100%;
+    top: 130%;
+    height: calc(90vh - 100%);
+    width: 250px;
+    left: 30px;
+    z-index: 1;
 }
+

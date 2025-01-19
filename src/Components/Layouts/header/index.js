@@ -89,26 +89,27 @@ function Header({ index }) {
             <FontAwesomeIcon icon={faComment} />
           </Button>
           <span className={clsx(styles.toolTip)}>Tin nhắn</span>
-          {showDialog === 1 &&<DialogChat onClick={() => setShowDialog(0)} />}
         </div>
+        {showDialog === 1 &&<DialogChat onClick={() => setShowDialog(0)} />}
 
         <div className={clsx(styles.active, styles.paddingRight)}>
           <Button ref={btnNotiRef} icon onClick={()=>handleOnClick(2,btnNotiRef)}>
             <FontAwesomeIcon icon={faBell} />
           </Button>
           <span className={clsx(styles.toolTip)}>Thông báo</span>
-          {showDialog === 2 && <DialogNoti onClick={() => setShowDialog(0)} />}
         </div>
+        {showDialog === 2 && <DialogNoti onClick={() => setShowDialog(0)} />}
 
         <div className={clsx(styles.active)}>
           <Button icon onClick={()=>handleOnClick(3,btnAccountRef)} ref={btnAccountRef}>
             <FontAwesomeIcon icon={faUser} />
           </Button>
           <span className={clsx(styles.toolTip)}>Tài khoản</span>
-          {showDialog === 3 && (
+
+        </div>
+        {showDialog === 3 && (
             <DialogAccount onClick={() => setShowDialog(0)} />
           )}
-        </div>
       </div>
     </header>
   );
