@@ -8,6 +8,7 @@ import clsx from "clsx";
 import styles from "./register.module.css";
 import logo from "~/assets/images/logo.svg";
 
+import { toast } from "react-toastify";
 function Register() {
   const [username, setUsername] = useState("");
 
@@ -79,26 +80,41 @@ function Register() {
   }, [username, password, confirmPassword]);
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    post(
-      register,
+    toast.promise(
+      post(
+        register,
+        {
+          username: username,
+          password: password,
+          fullname: fullname,
+        },
+        false
+      ),
       {
-        username: username,
-        password: password,
-        fullname: fullname,
-      },
-      false
-    )
-      .then((res) => {
-        alert("Đăng ký thành công");
-        navigate("/login");
-      })
-      .catch((err) => {
-        setErrorResponse(true);
-        setErrorText(err.response.data.message);
-      });
+        pending: "Đang xử lý, vui lòng đợi...",
+        success: {
+          render() {
+            navigate("/login"); // Chuyển hướng sau khi đăng ký thành công
+            return "Đăng ký thành công!";
+          },
+        },
+        error: {
+          render({ data }) {
+            const err = data; // Lỗi trả về từ axios
+            setErrorResponse(true);
+            if (err?.code === "ERR_NETWORK") {
+              setErrorText("Không thể kết nối với server.");
+            } else {
+              setErrorText(err?.response?.data?.message || "Đã xảy ra lỗi!");
+            }
+            return "Đăng ký thất bại!";
+          },
+        },
+      }
+    );
+    
   };
-
+  
   return (
     <div className={clsx(styles.container)}>
       <form onSubmit={handleSubmit} className={clsx(styles.form)}>

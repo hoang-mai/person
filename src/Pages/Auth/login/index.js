@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import styles from "./login.module.css";
 import logo from "~/assets/images/logo.svg";
@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { login } from "~/services/ApiEndpoint";
 import { post } from "~/services/callApi";
+import { toast } from "react-toastify";
+
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -16,7 +18,9 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [errorResponse, setErrorResponse] = useState(false);
-  const [errorText, setErrorText] = useState("Thông tin tài khoản hoặc nhật khẩu không chính xác1");
+  const [errorText, setErrorText] = useState(
+    "Thông tin tài khoản hoặc nhật khẩu không chính xác1"
+  );
   const navigate = useNavigate();
   const handleOnChangeUsername = (event) => {
     const value = event.target.value;
@@ -57,19 +61,36 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here
-    console.log("Username:", username);
-
-    console.log("Password:", password);
-    post(login, { username:username, password:password }, false)
-      .then((response) => {
-        console.log(response);
-        // localStorage.setItem("token", response.data.token);
-         navigate("/");
-      })
-      .catch((error) => {
-        setErrorResponse(true);
-        setErrorText(error.response.data.message);
-  });
+    toast.promise(
+      post(login, { username: username, password: password }, false),
+      {
+        pending: "Đang xử lý, vui lòng đợi...",
+        success: {
+          render({data}) {
+            const response = data;
+            
+            
+            localStorage.setItem("accessToken", response?.data?.data?.accessToken);
+            localStorage.setItem("refreshToken", response?.data?.data?.refreshToken);
+            navigate("/");
+            return "Đăng nhập thành công";
+          },
+        },
+        error: {
+          render({ data }) {
+            setErrorResponse(true);
+            const error = data;
+            console.log(error);
+            if (error.code === "ERR_NETWORK") {
+              setErrorText("Không thể kết nối với server.");
+            } else {
+              setErrorText(error.response?.data?.message);
+            }
+            return "Đăng nhập thất bại";
+          },
+        },
+      }
+    );
   };
 
   return (
@@ -128,9 +149,13 @@ function Login() {
               Mật khẩu phải chứa ít nhất 6 ký tự
             </div>
           </div>
-          <div className={clsx(styles.error,{
-            [styles.showError]: errorResponse,
-          })}>{errorText}</div>
+          <div
+            className={clsx(styles.error, {
+              [styles.showError]: errorResponse,
+            })}
+          >
+            {errorText}
+          </div>
         </div>
 
         <button
