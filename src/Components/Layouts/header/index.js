@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import logo from "~/assets/images/logo.svg";
+
 import styles from "./hearder.module.css";
 import Button from "~/Components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,25 +7,35 @@ import {
   faBell,
   faComment,
   faHome,
-  faSearch,
   faUser,
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import {
   DialogChat,
   DialogNoti,
   DialogAccount,
-} from "~/Components/Dialog/dialog";
+  DialogResultSearch,
+} from "~/Components/Dialog";
 
-function Header({ index }) {
-  const [iconNavFocus, setIconNavFocus] = React.useState(index);
+function Header() {
+  const [iconNavFocus, setIconNavFocus] = React.useState(1);
   const [showDialog, setShowDialog] = React.useState(0);
+
   const btnChatRef = React.useRef(null);
   const btnNotiRef = React.useRef(null);
   const btnAccountRef = React.useRef(null);
-  const handleOnClick = (indexButton,btnRef) => {
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    if (
+      localStorage.getItem("accessToken") === null ||
+      localStorage.getItem("refreshToken") === null
+    ) {
+      navigate("/login");
+    }
+  }, [navigate]);
+  const handleOnClickButtonUserInfo = (indexButton, btnRef) => {
     if (indexButton === showDialog) {
       btnRef.current.blur();
       return setShowDialog(0);
@@ -34,27 +44,12 @@ function Header({ index }) {
     }
   };
 
-
   return (
     <header role="banner" className={clsx(styles.header)}>
-      <div className={clsx(styles.logoWrapper)}>
-        <Link to="/">
-          <Button logo>
-            <img src={logo} alt="logo" />
-          </Button>
-        </Link>
-        <div className={clsx(styles.searchWrapper)}>
-          <FontAwesomeIcon
-            icon={faSearch}
-            className={clsx(styles.iconSearch)}
-          />
-          <input
-            type="text"
-            className={clsx(styles.search)}
-            placeholder="Tìm kiếm"
-          />
-        </div>
+      <div className={clsx(styles.wapperLogo)}>
+        <DialogResultSearch showDialog={showDialog} setShowDialog={setShowDialog}  />
       </div>
+
       <nav role="navigation" className={clsx(styles.nav)}>
         <div className={clsx(styles.active, styles.childNav)}>
           <Link to="/">
@@ -85,15 +80,23 @@ function Header({ index }) {
       </nav>
       <div className={clsx(styles.userInfo)}>
         <div className={clsx(styles.active, styles.paddingRight)}>
-          <Button ref={btnChatRef} icon onClick={()=>handleOnClick(1,btnChatRef)} >
+          <Button
+            ref={btnChatRef}
+            icon
+            onClick={() => handleOnClickButtonUserInfo(1, btnChatRef)}
+          >
             <FontAwesomeIcon icon={faComment} />
           </Button>
           <span className={clsx(styles.toolTip)}>Tin nhắn</span>
         </div>
-        {showDialog === 1 &&<DialogChat onClick={() => setShowDialog(0)} />}
+        {showDialog === 1 && <DialogChat onClick={() => setShowDialog(0)} />}
 
         <div className={clsx(styles.active, styles.paddingRight)}>
-          <Button ref={btnNotiRef} icon onClick={()=>handleOnClick(2,btnNotiRef)}>
+          <Button
+            ref={btnNotiRef}
+            icon
+            onClick={() => handleOnClickButtonUserInfo(2, btnNotiRef)}
+          >
             <FontAwesomeIcon icon={faBell} />
           </Button>
           <span className={clsx(styles.toolTip)}>Thông báo</span>
@@ -101,15 +104,16 @@ function Header({ index }) {
         {showDialog === 2 && <DialogNoti onClick={() => setShowDialog(0)} />}
 
         <div className={clsx(styles.active)}>
-          <Button icon onClick={()=>handleOnClick(3,btnAccountRef)} ref={btnAccountRef}>
+          <Button
+            icon
+            onClick={() => handleOnClickButtonUserInfo(3, btnAccountRef)}
+            ref={btnAccountRef}
+          >
             <FontAwesomeIcon icon={faUser} />
           </Button>
           <span className={clsx(styles.toolTip)}>Tài khoản</span>
-
         </div>
-        {showDialog === 3 && (
-            <DialogAccount onClick={() => setShowDialog(0)} />
-          )}
+        {showDialog === 3 && <DialogAccount onClick={() => setShowDialog(0)} />}
       </div>
     </header>
   );

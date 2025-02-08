@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { post } from "~/services/callApi.js";
-import { register } from "~/services/ApiEndpoint.js";
+import { register } from "~/services/apiEndpoint.js";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";

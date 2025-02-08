@@ -1,3 +1,4 @@
+@import '../../configs/colors/colors.css';
 @font-face {
   font-family: "Roboto";
   src: url(../../assets/fonts/Roboto-VariableFont_wdth,wght.ttf) format("truetype");
@@ -13,11 +14,14 @@
 }
 
 body {
+  background-color: var(--background);
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   font-weight: normal;
   color: var(--color-text);
+  margin: 0;
+  padding: 0;
 }
 
 li{

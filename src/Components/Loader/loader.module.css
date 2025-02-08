@@ -1,0 +1,50 @@
+@keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: 200px 0;
+    }
+  }
+  
+  .skeletonContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 20px;
+    border: 1px solid #e0e0e0;
+    background-color: rgb(255, 247, 243);
+  }
+  
+  .skeletonAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite linear;
+  }
+  
+  .skeletonContent {
+    flex: 1;
+
+  }
+  
+  .skeletonLine {
+    height: 12px;
+    width: 100%;
+    background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite linear;
+    margin-bottom: 8px;
+  }
+  
+  .skeletonLineShort {
+    width: 60%;
+    height: 12px;
+    background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite linear;
+  }
+  

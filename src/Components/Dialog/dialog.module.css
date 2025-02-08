@@ -1,11 +1,170 @@
-.dialog{
+@import '../../configs/colors/colors.css';
+.dialog {
 
-    background-color: turquoise;
+    background-color: var(--background-dialog);
     position: absolute;
     top: 130%;
-    height: calc(90vh - 100%);
+    height: calc(70vh - 100%);
     width: 250px;
-    left: 30px;
+    right: 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
     z-index: 1;
 }
 
+.dialogResultSearch {
+    margin-right: 5px;
+    height: fit-content;
+    
+    position: static;
+    background-color: var(---background);
+    box-shadow: none;
+}
+.showDialog{
+    background-color: var(--background-dialog);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+}
+.logoWrapper {
+    height: 60px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-right: 16px;
+    padding-left: 10px;
+
+}
+
+.searchWrapper {
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    max-width: 200px;
+}
+
+.search {
+
+    height: 65%;
+    width: 100%;
+
+    padding-left: 40px;
+    color: var(--color-btn);
+    border-radius: 20px;
+    background-color: var(--background-color);
+    border: none;
+}
+
+.search:focus {
+    outline: none;
+}
+
+.search::-webkit-search-cancel-button {
+    display: none;
+}
+
+.searchIcon {
+    position: absolute;
+
+
+}
+
+.xSearch {
+    position: absolute;
+    right: 0;
+
+    cursor: pointer;
+}
+
+
+.resultSearchList {
+
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+
+    
+}
+.resultSearchItem {
+    display: grid;
+    grid-template-columns: 2fr 7fr 1fr;
+    padding: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+.resultSearchItem:hover {
+    background-color: var(--background-color-hover);
+}
+
+
+.status{
+    font-size: 12px;
+}
+.avatar{
+    margin-right: 5px;
+}
+.spinnerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    padding: 10px;
+}
+
+.spinner {
+    
+    border: 3.5px solid rgba(0, 0, 0, 0.1);
+    border-left-color:  rgb(189, 159, 144);
+    /* Màu của spinner */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+.noResult{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    opacity: 0.9;
+    padding-bottom: 10px;
+}
+.resultSearchLink{
+    text-decoration: none;
+    color: var(--color-text);
+}
+.hearderHistoryWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    
+}
+
+.buttonChangeHistory{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text);
+    padding: 10px ;
+}
+.buttonChangeHistory:hover{
+    background-color: var(--background-color-hover);
+    border-radius: 10px;
+}
+.textSearchRecently{
+    font-weight: 800;
+    font-size: 1.1rem;
+}

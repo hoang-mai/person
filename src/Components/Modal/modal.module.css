@@ -1,0 +1,57 @@
+@import "../../configs/colors/colors.css";
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Mờ nền khi modal hiện lên */
+    z-index: 9998; /* Nền nằm dưới modal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContent {
+    background-color: var(--background-dialog);
+    padding: 20px;
+    padding-top: 0px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 300px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.modalButton {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.cancel,
+.delete {
+    border-radius: 10px;
+    border: none;
+    height: 30px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.cancel {
+    background-color: var(--background-color);
+    color: var(--color-text);
+}
+
+.delete {
+    background-color: salmon;
+    color: var(--color-text);
+}
+
+.delete:hover {
+    background-color: red;
+}
+.cancel:hover {
+    background-color: var(--background-color-hover);
+}

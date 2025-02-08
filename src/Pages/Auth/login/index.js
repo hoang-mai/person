@@ -5,7 +5,7 @@ import styles from "./login.module.css";
 import logo from "~/assets/images/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { login } from "~/services/ApiEndpoint";
+import { login } from "~/services/apiEndpoint";
 import { post } from "~/services/callApi";
 import { toast } from "react-toastify";
 

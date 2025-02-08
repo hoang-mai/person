@@ -1,0 +1,22 @@
+@import "../../../configs/colors/colors.css";
+.leftSideBar{
+height: 100%;
+background-color: var(--background-dialog);
+border-radius: 20px;
+margin: 10px 0px 10px 0px;
+padding: 0px 10px 0px 10px;
+border: 1px solid #e0e0e0;
+}
+.hearderFilter{
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+.bodyFilter{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.listFilter{
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+}

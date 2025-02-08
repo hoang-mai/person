@@ -1,0 +1,12 @@
+.body{
+    
+    
+}
+.search{
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+}
+.searchHistory{
+    display: grid;
+    grid-template-columns: 2fr 8fr;  
+}

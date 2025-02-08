@@ -1,4 +1,6 @@
 :root {
+    --background : rgb(255, 255, 255);
+    --background-dialog: rgb(255, 247, 243);
     --background-color: rgb(255 238 228);
     --background-color-hover: rgb(255, 222, 203);
     --background-color-active: rgb(255, 208, 181);

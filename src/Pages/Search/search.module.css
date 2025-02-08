@@ -1,0 +1,8 @@
+@import "../../configs/colors/colors.css";
+
+.container {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
